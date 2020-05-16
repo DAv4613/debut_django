@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+
+
+{% block title %} {{ user.first_name}} Profile {% endblock %}
+{% block content%}
+  <body>
+      
+      <div class="text-uppercase">
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb cyan lighten-4">
+            <li class="breadcrumb-item active">Home</li>
+          </ol>
+        </nav>
+      
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb cyan lighten-4">
+            <li class="breadcrumb-item"><a class="" href="#">Home</a></li>
+            <li class="breadcrumb-item active">Library</li>
+          </ol>
+        </nav>
+    </div>
+      
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+                <div class="col-md-9">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">login form </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+  </body>
+  {% endblock %}
+
+

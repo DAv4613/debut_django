@@ -1,0 +1,281 @@
+/*BODY*/
+
+body
+{
+	margin-bottom: 0px;
+	font-family: sans-serif;	
+}
+.tpromo_1
+{
+	display: block;
+	width: 100%;
+	height: 70px;
+	padding: 10px 10px 10px 50px;
+	border: 1px solid #ccc;
+	background: rgba(40, 40, 40);
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 18px;
+	color: #fff;
+	margin-bottom: 5px;
+}
+.price
+{
+	font-size: 12px;
+	font-weight: 500;
+	direction: ltr;
+	padding-left: 4px;
+	padding-right: 4px;
+	height: 10px;
+	min-width: 20px;
+	top: 3px;
+	right: 3px;
+	position: absolute;
+	color: #f68b1e;
+	background-color: #feefde;
+	line-height: 1.2;
+	align-items: center;
+	justify-content: center;
+	display: inline-flex;
+	border-radius: 2px;
+	
+}
+
+.navbar-brand
+{
+	
+	margin: 0 50px 0 100px;
+}
+/*NAV*/
+
+
+nav ul 
+{
+	margin-right: 200px;
+
+}
+nav .form-control
+{
+	width: 200px;
+}
+nav form 
+{
+	padding-right: 100px;
+}
+nav ul li:first:child
+{
+	margin-right: 20px;
+}
+.nav-item
+{
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn-default
+{
+	background-color: #ffc107!important;
+	color: #fff;
+}
+.fas
+{
+	color: #000;
+}
+.fas:hover
+{
+	color: orange;
+}
+.mb-1
+{
+	color:#343a40;
+}
+nav ul li a
+{
+	color: #343a40;
+}
+nav ul li a:hover
+{
+	color: orange;
+}
+/*CAROUSEL*/
+
+.carousel-inner img
+{
+	height: 300px;
+	width: auto;
+}
+
+/*SECTION*/
+section h2
+{
+	width: 100%;
+	height: 60px;
+	border: 1px solid #ccc;
+	padding: 0 auto;
+}
+
+/*FOOTER*/
+.input-group-append
+{
+	border-radius: 5px;
+	color: #000;
+}
+.btn2
+{
+	color:  #000;
+}
+/*Up page accueil*/
+.fass
+{
+	display: block;
+	width: 200px;
+	height: 50px;
+	font-size: 45px;
+	margin-top: 50px;
+	margin-right: -90px;
+	float: right;
+
+}
+.wrapper
+{
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+}
+
+section
+{
+	display: block;
+}
+footer .fas
+{
+	color: #fff;
+}
+footer
+{
+	margin-top: 30px;
+}
+
+.page-footer {
+	background-color: #929FBA; }
+
+/*COMMANDE CSS */
+@media only screen and (max-width: 768px) {
+
+
+table,
+thead,
+tbody,
+th,
+td,
+tr {
+  display: block;
+  text-align: center;
+}
+table.table td {
+  padding-top: 1.5rem;
+  padding-bottom: .4rem;
+
+}
+img {}
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+td {
+  /* Behave  like a "row" */
+  border: none;
+  position: relative;
+  padding-left: 50%;
+
+}
+
+td:before {
+  /* Now like a table header */
+  position: absolute;
+  /* Top/left values mimic padding */
+  top: 6px;
+  left: 6px;
+  white-space: nowrap;
+}
+
+td:nth-of-type(1):before {
+  content: "Product";
+  font-weight: 400;
+  left: 50%;
+  transform: translate(-50%);
+}
+td:nth-of-type(2):before {
+  content: "Color";
+  font-weight: 400;
+  left: 50%;
+  transform: translate(-50%);
+}
+td:nth-of-type(3) {
+  position: absolute;
+  border: none !important;
+}
+td:nth-of-type(4):before {
+  content: "Price";
+  left: 50%;
+  transform: translate(-50%);
+  font-weight: 400;
+}
+td:nth-of-type(5):before {
+  content: "QTY";
+  left: 50%;
+  transform: translate(-50%);
+  font-weight: 400;
+}
+td:nth-of-type(5) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1.9rem !important;
+}
+td:nth-of-type(6):before {
+  content: "Amount";
+  left: 50%;
+  transform: translate(-50%);
+  font-weight: 400;
+}
+td:nth-of-type(7):before {
+  content: "Remove item";
+  left: 50%;
+  transform: translate(-50%);
+  font-weight: 400;
+}
+.btn-group {
+  margin-left: 0 !important;
+}
+tr:nth-child(4) td:nth-of-type(4):before,
+tr:nth-child(4) td:nth-of-type(1):before,
+tr:nth-child(4) td:nth-of-type(2):before {
+  content: '';
+}
+tr:nth-child(4) td:nth-of-type(1) {
+  position: absolute;
+  border: none !important;
+}
+tr:nth-child(4) td:nth-of-type(3) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+tr:nth-child(4) td:nth-of-type(4) {
+  border-top: none !important;
+  display: flex;
+  justify-content: center;
+  border-bottom : 1px solid #dee2e6;
+}
+
+
+   

@@ -1,0 +1,116 @@
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<br><br><br><br>
+<body >
+ 
+    {% load static %}
+    {% include "layouts/nav.html" %}
+
+    <div class="container">
+
+      <section class="section my-5 pb-5">
+
+        <div class="table-responsive">
+
+          <table class="table product-table">
+
+            <thead>
+              <tr>
+                <th class="font-weight-bold">
+                    <strong>Nbre</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong></strong>
+              </th>
+                <th class="font-weight-bold">
+                  <strong>Article</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>Prix</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>quantité</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>Total</strong>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+           
+            <tbody>
+
+              {% for order_item in object.items.all %}
+              <td>
+                <p class="font-weight-bold">{{forloop.counter}}</p>
+              </td>
+              <td>
+                <p ><img src="{{order_item.item.image.url}}" class="card-img-top" alt="sample " 
+                  style="max-width: 80px;max-height: 60px;"></p>
+              </td> 
+                <td>
+                  <p >{{order_item.item.title}}</p>
+                </td>               
+                <td>{{order_item.item.price}}</td>
+                <td >
+                  <p> 
+                      <a href="{%url 'core:remove-single-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a></i>
+                     {{order_item.quantity}} 
+                     <a href="{%url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a></p>
+                </td>
+                
+                <td>
+                   <p>
+                       {% if order_item.item.discount_price%}
+                            {{order_item.get_total_item_price}} fcfa
+                            
+                       {% else %}
+                            {{order_item.get_total_item_discount_price}}fcfa
+                       {% endif %}
+
+                       <a style="color:red;" href="{%url 'core:remove-from-cart' order_item.item.slug %}">
+                         <i class="fas fa-trash   float-right "></i>
+                       </a>
+
+                   </p>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                  <td colspan="5">
+                      Votre panier est vide 
+                  </td>
+              </tr>
+              <td colspan="5">
+                <a class="btn btn-primary float-right " href="/">continuer mon shopping</a>
+            </td>
+              {% endfor %}
+              {% if object.get_total%}
+              <tr>
+                  <td colspan="5" class="font-weight-bold">Total commande</td>
+                  <td colspan="5">{{object.get_total}} FCFA</td>
+              </tr>
+              <tr>
+                  <td colspan="5">
+                      <a class="btn btn-warning float-right ml-2" href="#">Valider mon achat</a>
+                      <a class="btn btn-primary float-right " href="/">continuer mon shopping</a>
+                  </td>
+              </tr>           
+              {% endif %}
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </div>
+{% endblock content %}
+
+
+    

@@ -1,0 +1,918 @@
+{% extends "base.html" %}
+
+{% block content%}
+<body>
+    {% load static %}
+    {% include "layouts/nav.html" %}
+  <br><br><br><br>
+  <div>
+    
+  </div> <br>
+  <div style="color: blue;">
+    {% if sr %}
+        {% for t in sr %}
+            {{t.object_list}}
+        {% endfor %}
+    {% endif %}
+  </div>
+  <div class="container-fluid" style="background-color: #ccc;">
+    <div class="container" style="background-color: #fff;">
+       <div class="container-fluid">
+          <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+              <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+            </ol>
+           
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'img/a1.jpg' %}"
+                  alt="First slide">
+              </div>
+              
+              <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'img/a3.jpg' %}"
+                  alt="Second slide">
+              </div>
+              
+              <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'img/a2.jpg' %}"
+                  alt="Third slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'img/a4.jpg' %}"
+                  alt="Third slide">
+              </div>
+            </div>
+           
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+     
+      <section class="text-center my-5">
+
+            <h2 class="h1-responsive font-weight-bold text-center my-5">Nos produits les plus recommandé</h2>
+            
+            <div class="row">
+              {% for item in items %}
+              <div class="col-lg-2 col-md-3 col-sm-6 mb-lg-0 mb-4">
+                <div class="card card-cascade narrower card-ecommerce">
+                  <div class="view view-cascade overlay">
+                    
+                      <img src=" {{item.image.url}} " class="card-img-top"
+                      alt="sample ">
+                                      
+                      <div class="price">{{item.reduction}}%</div>
+                   
+                    <a href="{{item.get_absolute_url}}">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>                   
+                  <div class="card-body card-body-cascade text-center">                     
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">{{item.get_category_display}}</a>
+                      </p>
+                    </h4>
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="far fa-star"></i>
+                      </li>
+                    </ul>
+                    <p class="card-text">{{item.description|truncatewords:5}}
+                    </p>
+                    <div class="card-footer px-1">
+                      <span class="float-left ">
+                        <p><del>{{item.discount_price}} fcfa</del></p>
+                        <p class="font-weight-bold">{{item.price}} fcfa</p>
+                      </span>
+                      <span class="float-right">
+                        <a href="{{ item.get_add_to_cart_home_page}}" data-toggle="tooltip" data-placement="top" title="Ajouer a mon panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="voir plus">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="active" data-toggle="tooltip" data-placement="top" title="Ajouer a mes favoris">
+                          <i class="fas fa-heart ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+              {% endfor %}  
+
+              <!-- Grid column -->
+            {% comment %}  <div class="col-lg-2 col-md-3 col-sm-6 mb-lg-0 mb-4">
+                <!-- Card -->
+                <div class="card card-cascade narrower card-ecommerce">
+                  <!-- Card image -->
+                  <div class="view view-cascade overlay">
+                    <a href="">
+                      <img src="{% static 'img/b3.jpg' %}" class="card-img-top"
+                        alt="sample photo">
+                        <div class="price">-15%</div>
+                    </a>
+                    <a href="{{item.get_absolute_url}}">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                 
+                  <div class="card-body card-body-cascade text-center">
+                    <!-- Category & Title -->
+                    
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">{{item.get_category_display}}</a>
+                      </p>
+                    </h4>
+                    <!--Rating-->
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                    </ul>
+                    <!-- Description -->
+                    <p class="card-text">{{item.description}}
+                    </p>
+                    <!-- Card footer -->
+                    <div class="card-footer px-1">
+                      <span class="float-left font-weight-bold">
+                        <b>
+                          {% if item.discount_price %}
+                          {{discount_price}}
+                          {% else %}
+                          {{item.price}} FCFA
+                          {% endif %}
+                        </b>
+                      </span>
+                      <span class="float-right">
+                        <a data-toggle="tooltip" data-placement="top" title="Ajouter au panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="voir plus">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Ajouter à mes favoris">
+                          <i class="fas fa-heart grey-text ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+              
+
+              <!-- Grid column -->
+              <div class="col-lg-2 col-md-3 col-sm-6 mb-md-0 mb-4">
+                <!-- Card -->
+                <div class="card card-cascade narrower card-ecommerce">
+                  <!-- Card image -->
+                  <div class="view view-cascade overlay">
+                    <img src="{%static 'img/b4.jpg' %}" class="card-img-top"
+                      alt="sample photo">
+                       <div class="price">-30%</div>
+                    <a>
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <!-- Card image -->
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-center">
+                    <!-- Category & Title -->
+                    
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">Chaussure</a>
+                      </p>
+                    </h4>
+                    <!--Rating-->
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star-half-alt"></i>
+                      </li>
+                    </ul>
+                    <!-- Description -->
+                    <p class="card-text">Chaussure mode inde
+                    </p>
+                    <!-- Card footer -->
+                    <div class="card-footer px-1">
+                      <span class="float-left font-weight-bold">
+                        <b>1,800 FCFA</b>
+                      </span>
+                      <span class="float-right">
+                        <a data-toggle="tooltip" data-placement="top" title="Ajouter au panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="share">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="" data-toggle="tooltip" data-placement="top" title="Ajouter à mes favoris">
+                          <i class="fas fa-heart grey-text ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+             
+              <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="card card-cascade narrower card-ecommerce">
+                  <div class="view view-cascade overlay">
+                    <img src="{%static 'img/b5.jpg' %}" class="card-img-top"
+                      alt="sample photo">
+                       <div class="price">-10%</div>
+                    <a>
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  
+                  <div class="card-body card-body-cascade text-center">
+                    
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">Robe</a>
+                      </p>
+                    </h4>
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="far fa-star"></i>
+                      </li>
+                    </ul>
+                    <p class="card-text">mini-robe fille de waragnéné
+                    </p>
+                    <div class="card-footer px-1">
+                      <span class="float-left font-weight-bold">
+                        <b>3,600 FCFA</b>
+                      </span>
+                      <span class="float-right">
+                        <a data-toggle="tooltip" data-placement="top" title="Ajouter au panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="voir plus">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="active" data-toggle="tooltip" data-placement="top" title="Ajouter à mes favoris">
+                          <i class="fas fa-heart ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+              <!-- Grid column -->
+              <div class="col-lg-2 col-md-3 col-sm-6">
+                <!-- Card -->
+                <div class="card card-cascade narrower card-ecommerce">
+                  <!-- Card image -->
+                  <div class="view view-cascade overlay">
+                    <img src="{% static 'img/b8.jpg' %}" class="card-img-top"
+                      alt="sample photo">
+                       <div class="price">-5%</div>
+                    <a>
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  
+                  <div class="card-body card-body-cascade text-center">
+                    
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">Robe</a>
+                      </p>
+                    </h4>
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="far fa-star"></i>
+                      </li>
+                    </ul>
+                    <p class="card-text">Robe  jeune fille mini ...
+                    </p>
+                    <div class="card-footer px-1">
+                      <span class="float-left font-weight-bold">
+                        <b>4,000 FCFA</b>
+                      </span>
+                      <span class="float-right">
+                        <a data-toggle="tooltip" data-placement="top" title="Ajouter au panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="voir plus">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="active" data-toggle="tooltip" data-placement="top" title="Ajouter à mes favoris">
+                          <i class="fas fa-heart ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="card card-cascade narrower card-ecommerce">
+                  <div class="view view-cascade overlay">
+                    <img src="{%static 'img/b.jpg' %}" class="card-img-top"
+                      alt="sample photo">
+                       <div class="price">-20%</div>
+                    <a>
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                 
+                  <div class="card-body card-body-cascade text-center">
+                   
+                    <h4 class="card-title">
+                      <p>
+                        <a href="">Colliers</a>
+                      </p>
+                    </h4>
+                    <ul class="rating">
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="far fa-star"></i>
+                      </li>
+                    </ul>
+                    <!-- Description -->
+                    <p class="card-text">Chez les baoulé le collier d'or ...
+                    </p>
+                    <!-- Card footer -->
+                    <div class="card-footer px-1">
+                      <span class="float-left font-weight-bold">
+                        <b>3,700 FCFA</b>
+                      </span>
+                      <span class="float-right">
+                        <a data-toggle="tooltip" data-placement="top" title="Ajouter au panier">
+                          <i class="fas fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Voit plus">
+                          <i class="fas fa-voir plus-alt grey-text ml-3"></i>
+                        </a>
+                        <a class="active" data-toggle="tooltip" data-placement="top" title="Ajouter à mes favoris">
+                          <i class="fas fa-heart ml-3"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Card content -->
+                </div>
+                <!-- Card -->
+              </div>
+              <!-- Grid column -->
+              
+            </div>
+            {% endcomment %}
+        <!-- Grid row -->
+
+      </section>
+
+       <div class="container">
+          <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+            <!--Controls-->
+            <div class="controls-top">
+              <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+              <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                  class="fas fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+              <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+              <li data-target="#multi-item-example" data-slide-to="1"></li>
+              <li data-target="#multi-item-example" data-slide-to="2"></li>
+            </ol>
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+
+              
+              <div class="carousel-item active">
+                <div class="row">
+                
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src=" {{slide.image.url}} "
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                       <p class="card-text"> {{slide.description}}}</p>
+                        <a href="#" class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                 
+                 <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.description}}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.description}}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.title}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                
+             <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src=" {{slide.image.url}} "
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                       <p class="card-text"> {{slide.description}}}</p>
+                        <a href="#" class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                 
+                 <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.description}}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.description}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card mb-2">
+                      <img class="card-img-top"
+                        src="{{slide.image.url}}"
+                        alt="Card image cap">
+                        <h4 class="card-title">
+                          <p>
+                            <a href="">{{slide.title}}</a>
+                          </p>
+                        </h4>
+                      <div class="card-body">
+                        <!--    <h4 class="card-title">Card title</h4>  -->
+                        <p class="card-text">{{slide.description}}</p>
+                        <a class="btn btn-primary">Voir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+              </div>
+
+           <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card mb-2">
+                    <img class="card-img-top"
+                      src="{%static 'img/c3.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">Nos produits de valeurs cliquer sur le bouton <b>voir plus</b> pour e regaler avec nos diffrents produits..</p>
+                      <a class="btn btn-primary">Voir plus</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="card mb-2">
+                    <img class="card-img-top"
+                      src="{%static 'img/c2.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">Nos produits de valeurs cliquer sur le bouton <b>voir plus</b> pour e regaler avec nos diffrents produits..</p>
+                      <a class="btn btn-primary">Voir plus</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="card mb-2">
+                    <img class="card-img-top"
+                      src="{%static 'img/c2.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">Chez nous on force pas en pays agni <mark><i>Nos plus de valeurs </i></mark>.</p>
+                      <a href="#" class="btn btn-primary">Voir plus</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card mb-2">
+                    <img class="card-img-top"
+                      src="{%static 'img/c2.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">Chez nous on force pas en pays agni <mark><i>Nos plus de valeurs </i></mark>.</p>
+                      <a href="#" class="btn btn-primary">Voir plus</a>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              </div> 
+            </div>
+
+          </div>
+        </div>
+    </section>
+  
+    <section class="text-center my-5">
+      <h2 class="h1-responsive font-weight-bold text-center my-5">Nos categories</h2>
+      
+      <div class="row">
+        {% for over  in cat %}
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-lg-0 mb-4">
+            <div class="card align-items-center">
+              <div class="view overlay">
+                <img src="{{over.image.url}}" class="card-img-top"
+                  alt="image">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                  
+                </a>
+              </div>
+              
+              <div class="card-body text-center">
+                <a href="" class="grey-text">
+                  <h5></h5>
+                </a>
+                <h5>
+                  
+                    <a href="" class="dark-grey-text">{{over.title|truncatewords:3}} <br>
+                      <span class="badge badge-pill {{ over.get_label_display }}-color">NEW</span>
+                    </a>
+                  
+                </h5>
+                <p class=" blue-text">
+                  {{over.price}} FCFA
+                </p>
+              </div>
+            </div>
+          </div>
+        
+        
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-lg-0 mb-4">
+            <div class="card align-items-center">
+              <div class="view overlay">
+                <img src="{%static 'img/d1.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              
+              <div class="card-body text-center">
+                <a href="" class="grey-text">
+                </a>
+                <h5>
+                  <b>
+                    <a href="" class="dark-grey-text">Chaussures femmes</a>
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </b>
+                </h5>
+                <h4 class="font-weight-bold blue-text">
+                  <b>1,800 FCFA</b>
+                </h4>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-md-0 mb-4">
+            <div class="card align-items-center">
+              <div class="view overlay">
+                <img src="{%static 'img/b10.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            
+              <div class="card-body text-center">
+                <a href="" class="grey-text">
+                </a>
+                <h5>
+                  <b>
+                    <a href="" class="dark-grey-text">Collier femme ..
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </b>
+                </h5>
+                <h4 class="font-weight-bold blue-text">
+                  <b>2,300 FCFA</b>
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-md-0 mb-4">
+            <div class="card align-items-center">
+              <div class="view overlay">
+                <img src="{%static 'img/d5.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              
+              <div class="card-body text-center">
+                <!-- Category & Title -->
+                <a href="" class="grey-text">
+                <!--  <h5>Outwear</h5> -->
+                </a>
+                <h5>
+                  <b>
+                    <a href="" class="dark-grey-text">Mini-boubou homme </a>
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </b>
+                </h5>
+                <h4 class="font-weight-bold blue-text">
+                  <b>900 FCFA</b>
+                </h4>
+              </div>
+              <!-- Card content -->
+            </div>
+            <!-- Card -->
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-md-0 mb-4">
+            <!-- Card -->
+            <div class="card align-items-center">
+              <!-- Card image -->
+              <div class="view overlay">
+                <img src="{%static 'img/d4.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!-- Card image -->
+              <!-- Card content -->
+              <div class="card-body text-center">
+                <!-- Category & Title -->
+                <a href="" class="grey-text">
+                <!-- <h5>Outwear</h5> -->
+                </a>
+                <h5>
+                  <b>
+                    <a href="" class="dark-grey-text">Menteau homme</a>
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </b>
+                </h5>
+                <h4 class="font-weight-bold blue-text">
+                  <b>1500 FCFA</b>
+                </h4>
+              </div>
+              <!-- Card content -->
+            </div>
+            <!-- Card -->
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-md-0 mb-4">
+            <!-- Card -->
+            <div class="card align-items-center">
+              <!-- Card image -->
+              <div class="view overlay">
+                <img src="{%static 'img/d3.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!-- Card image -->
+              <!-- Card content -->
+              <div class="card-body text-center">
+                <!-- Category & Title -->
+                <a href="" class="grey-text">
+                <!--  <h5>Outwear</h5> -->
+                </a>
+                <h5>
+                  <b>
+                    <a href="" class="dark-grey-text">Sac à main Femme</a>
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </b>
+                </h5>
+                <h4 class="font-weight-bold blue-text">
+                  <b>2,300 FCFA</b>
+                </h4>
+              </div>
+            </div>
+          </div> 
+      {% endfor%}
+      </div> 
+    
+    </section>
+
+    <section class="container">
+        <header class="-tete">
+            <h2>Mode enfant</h2>
+            <a href="#">
+              <h6>Voir plus</h6>
+            </a> 
+        </header>
+
+    </section>
+
+    <section class="container">
+      <div class="wrapper">
+        <p>
+          <div class="text-center">
+            <mark>Bienvenue sur TradiFashion, une nouvelle  boutique  de la vente en ligne en Côte d'Ivoire !</mark> 
+          </div>
+          <br>
+
+
+          La  plus  récente  plateforme  d'achat  et  vente  en  ligne en Côte d’Ivoire vous propose un large choix de produits issus des plus grandes marques africains. Elle est la première entreprise qui valorise les traditions Africaines. Ce qui fait la force de <b><b>T</b>radi<b>F</b>ashion</b>, c'est  d'abord une nouvelle plateforme qui valorise les ressources Africaines. Retrouvez la liste de nos meilleures marques et boutiques officielles en faisant un tour sur notre site de vêtements traditionnels, des chaussures, des produits de beauté africains, ainsi l'univers des meilleurs pommades femme à moins cher.
+          <br>
+
+          <b><b>T</b>radi<b>F</b>ashion</b>, est également un lieux de s'offrir les meilleures collections  de mode pour homme, femme et enfants. Vous pourrez trouver des chaussures, chic pour femmes. Des belles chemises, pantalons  pour homme à bon prix. Les produits des beautés ne manquent pas aussi à l'appel à de nature. Achetez des collections de parfums pour embellir la douce peau.
+          <br><br>
+
+
+          Trouvez les meilleurs pour tous vos manisfestations
+
+         <b><b>T</b>radi<b>F</b>ashion</b> c'est aussi le lieu idéal pour trouver de bonnes idées pour vos différents événements. Il est difficile de parcourir les rues de la ville ou passer toute une journée pour trouver les produits nécessaires pour redonner du confort ou un nouveau look à son environnement. Trouvez aujourd'hui sur <b><b>T</b>radi<b>F</b>ashion</b> Côte d'Ivoire une large gamme de produits traditionnels, beurres de karité, miels etc aux meilleurs prix.  vous ne manquerez pas de trouver des produits adaptés à vos attentes. Vous pourrez trouver également une grande variété de petits et grands prodits. Profitez pleinement d'un confort de qualité à petit prix .<br><br>
+
+
+          Mode homme, femme et enfant : changez de style à tout moment sur <b><b>T</b>radi<b>F</b>ashion</b> CI
+
+          En Côte d’Ivoire, la mode Africaine n’a qu’une seule adresse : <b><b>T</b>radi<b>F</b>ashion</b> CI. Dans nos rayons, nous mettons à la disposition de nos clients et prospects la plus vaste gamme dédiée au fashion. Optez pour un style qui soit le reflet de votre personnalité. Chez <b>T</b>radi<b>F</b> CI, nous savons ce qui compte pour vous. Trouvez des idées de mode et l'art de l'association de tenues. Comparez une variété de vêtements d'habits - des hauts et de boubou. Ne vous limitez dans vos choix, avec <b>T</b>radi<b>F</b> devenez plus créative pour rester toujours en mode. <br><br>
+
+
+          Un service de livraison disponible dans toutes les régions de la Côte d’Ivoire
+
+          Vos commandes sont livrées dans les plus brefs délais à Abidjan et partout en Côte d'Ivoire ! Pour plus de sécurité et d'efficacité vous avez la possibilité de payer à la livraison. Avec la newsletter<b><b>T</b>radi<b>F</b>ashion</b>, restez connecté pour découvrir en avant-première les nouvelles gammes de produits constamment mises à jour par nos équipes. Suivez-nous également sur les réseaux sociaux à travers notre page Facebook, twitter. En outre, nos conseillers clients sont à votre entière disposition pour des informations en temps réel Contactez nous. En Côte d’Ivoire, le shopping traditionel  en ligne n’a qu’une seule adresse : <b><b>T</b>radi<b>F</b>ashion</b>
+        </p>
+      </div>
+      
+     </section>
+    </div>
+  </div>
+  {% include "layouts/footer.html" %}
+  {% include "layouts/script.html" %}  
+   
+{% endblock %}
+  
+    
+  </body> 
+</html>
